@@ -1,0 +1,50 @@
+
+body {background-color: #b4d5de; }
+img {
+    display: block;
+    height: 40pt;
+    margin-right: 6pt;
+    }
+h1 {
+    font-family: Tahoma;
+    font-weight: bold ;
+    font-size: 18pt;
+    margin-bottom: -10pt;
+    margin-top: 12pt;
+    color: #077591;
+  }
+h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: normal;
+    font-size: 12pt;
+    color: #912307;
+    margin-bottom: 12pt;
+  }
+  
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-weight: normal;
+    font-size: 10pt;
+    color: #01171d;
+    }
+label {
+    padding: 4pt;
+    background-color: #cde3e9;
+    font-style: italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-weight: normal;
+    font-size: 9pt;
+    color: #01171d;
+    display: block ;
+    border-style: none;
+    border-radius: 5pt;
+    margin-top: 5pt;
+    margin-bottom: -12pt;
+  }
+input[type=radio] {
+    position:fixed;
+    left:-9999px;
+  }
+fieldset {
+  border-radius: 10pt;
+  }

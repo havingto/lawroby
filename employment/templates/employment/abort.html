@@ -1,0 +1,11 @@
+{% load static %}
+
+{% include 'portal/header.html' %}
+
+<br/>
+    {% if error_message %}<strong>{{ error_message | linebreaks }}</strong>{% endif %}
+    <br/>
+<!-- <p><br/>{{ abort_text }}</p> -->
+<p><br/>I am sorry, your case may fall outside the ambit of the Fair Work Act.
+So, I am not able to assist you this time. Thank you for your visit, and please come
+back when you have an other inquiry.</p>

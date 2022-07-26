@@ -1,0 +1,35 @@
+{% load static %}
+{% include 'portal/header.html' %}
+
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'portal/style.css' %}">
+<div style="background-color: #ccdbfd; height: 40pt;">
+    <img align="left" src="{% static 'portal/maze.png' %}" alt="maze" />
+    <h1>LawRoby</h1>
+    <h2>Your tour guide in the labyrinth of law</h2>
+</div> -->
+
+<p><br/>I am an Artificial Intelligence agent, a robot if you like. 
+    That's where my name, LawRoby, comes from. I am an integral part 
+    of an <i>expert system</i> designed to help Australians to make informed 
+    decisions when facing legal challenges. <br/><br/>
+    My designer is a shy introvert who spent many years in 
+    universities studying Mathematics, Computer Science, Law (to mention only 
+    the most relevant), and some more years with developing interviewing 
+    skills.<br/><br/>
+    At present, this is a free service. but, in my calculations, this is a big 
+    mistake, and will have to change. However, I am not designed to argue.
+    <br/><br/>
+    OK. Shall we start?
+<br/>
+
+<form action={% url 'about' %} method="post">
+{% csrf_token %}
+<fieldset>
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+	{% for choice in start %}
+		<input type="radio" name="choice" id="choice{{ forloop.counter }}" 
+			onclick="javascript: submit()" value="{{ forloop.counter }}">
+		<label for="choice{{ forloop.counter }}">{{ choice }}</label><br/>
+	{% endfor %}
+</fieldset>
+</form></p>

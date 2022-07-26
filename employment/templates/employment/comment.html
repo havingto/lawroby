@@ -1,0 +1,14 @@
+{% load static %}
+
+{% include 'portal/header.html' %}
+
+<p><br/>
+    {% if error_message %}<strong>{{ error_message | linebreaks }}</strong>{% endif %}
+
+<form action={% url 'employment:interview' %} method="post">
+{% csrf_token %}<br/>
+	{{ comment_text| linebreaks }}
+	<input type="submit" name="comment" 
+    value="Click here when you are ready to continue"    
+    style="background-color: aliceblue; color: #03045e;">
+</form></p>

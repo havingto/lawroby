@@ -1,0 +1,19 @@
+{% load static %}
+
+{% include 'portal/header.html' %}
+
+<p>
+{% if error_message %}<strong>{{ error_message | linebreaks }}</strong>{% endif %}
+<br/>
+{{ question_text | linebreaks}}
+<br/>
+<form action="{% url 'employment:interview' %}" method="post">
+{% csrf_token %}
+<fieldset>
+	{% for choice in choices %}
+		<input type="radio" name="{{question_id}}" id="choice{{ forloop.counter }}" 
+		onclick="javascript: submit()" value="{{ forloop.counter }}">
+		<label for="choice{{ forloop.counter }}">{{ choice }}</label><br>
+	{% endfor %}
+</fieldset>
+</form></p>

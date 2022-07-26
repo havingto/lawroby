@@ -1,0 +1,30 @@
+{% load static %}
+
+{% include 'portal/header.html' %}
+
+<p><br/>
+Welcome to the employment law portal!<br/><br/>
+Although Australian states and territories have constitutional rights 
+to make their own employment related laws, most employment matters are 
+covered by federal law, particularly by the Fair Work Act and related 
+regulations. <br/><br/>
+These laws are written in plain English, but some words may have their 
+own legal definition. For example, the term "person" covers not 
+only people, but also corporate and government entities. That's all you 
+need to remember for now.<br/><br/>
+
+{{ question_text }}<br/><br/>
+(Throughout this session I will refer to it as the 
+"relevant time".)
+<br/>
+<form action={% url 'employment:intro' %} method="post">
+{% csrf_token %}
+<fieldset>
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+	{% for choice in timeframe %}
+		<input type="radio" name="choice" id="choice{{ forloop.counter }}" 
+		onclick="javascript: submit()" value="{{ forloop.counter }}">
+		<label for="choice{{ forloop.counter }}">{{ choice }}</label><br/>
+	{% endfor %}
+</fieldset>
+</form></p>
