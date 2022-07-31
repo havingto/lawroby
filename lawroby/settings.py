@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "whitenoise.runserver_nostatic",
     'django_extensions',
 ##    'debug_toolbar',
 ]
@@ -63,6 +64,7 @@ MIDDLEWARE = [
 ##    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -105,7 +107,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'employment',
         'USER': 'Andrash',
-        'PASSWORD': 'Mysqlmurlea54!',
+        'PASSWORD': '',
+        # 'PASSWORD': 'Mysqlmurlea54!',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
@@ -148,6 +151,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]  
+STATIC_ROOT = STATIC_ROOT = BASE_DIR / "staticfiles"
+# STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 INTERNAL_IPS = [
     '127.0.0.1',

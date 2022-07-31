@@ -6,13 +6,16 @@ __pycache__
 # Env
 .env
 myvenv/
+lawvenv/
 venv/
 
 # Database
 db.sqlite3
 
-# Static folder at project root
-/static/
+# Static folder at project root will be served from within the deployed app,
+# so it has to be consistent along local / git / web host
+# /static/
+/staticfiles/
 
 # macOS
 ._*
@@ -28,5 +31,6 @@ $RECYCLE.BIN/
 
 # Visual Studio
 .vscode/
+.vs/
 .history/
 *.code-workspace
