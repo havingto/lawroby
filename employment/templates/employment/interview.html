@@ -1,12 +1,18 @@
 {% load static %}
-
-{% include 'portal/header.html' %}
+<link rel="stylesheet" type="text/css" href="{% static 'portal/style.css' %}">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <img align="left" src="{% static 'portal/logo.jpg' %}" alt="logo" 
+        width="100%" height="auto"/>
+</head>
+<br/><br/>
+<body>
 
 <p>
 {% if error_message %}<strong>{{ error_message | linebreaks }}</strong>{% endif %}
 <br/>
 {{ question_text | linebreaks}}
-<br/>
+
 <form action="{% url 'employment:interview' %}" method="post">
 {% csrf_token %}
 <fieldset>
@@ -17,3 +23,4 @@
 	{% endfor %}
 </fieldset>
 </form></p>
+</body>

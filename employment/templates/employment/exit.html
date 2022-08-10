@@ -1,6 +1,12 @@
 {% load static %}
-
-{% include 'portal/header.html' %}
+<link rel="stylesheet" type="text/css" href="{% static 'portal/style.css' %}">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <img align="left" src="{% static 'portal/logo.jpg' %}" alt="logo" 
+        width="100%" height="auto"/>
+</head>
+<br/>
+<body>
 
 <form action={% url 'employment:create_output' %} method="post">
 {% csrf_token %}<br/>
@@ -11,8 +17,7 @@ I've prepared two pdf files for you. One contains the law that is directly
 and specifically relevant to your case. The second file contains full sections 
 of the particular legislaton which are more generally relevant. They provide a 
 wider legal context and reference. <br/></p>
-<input type="submit" name="relevant_law" value="Download - relevant_law"
-style="background-color: aliceblue; color: #03045e;">
-<input type="submit" name="full_sections" value="Download - full_sections"
-style="background-color: aliceblue; color: #03045e;">
+<input type="submit" name="relevant_law" value="Download - relevant_law">
+<input type="submit" name="full_sections" value="Download - full_sections">
 </form>
+</body>

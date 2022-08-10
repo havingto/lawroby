@@ -1,14 +1,22 @@
 {% load static %}
-
-{% include 'portal/header.html' %}
-
-<p><br/>
+<link rel="stylesheet" type="text/css" href="{% static 'portal/style.css' %}">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <img align="left" src="{% static 'portal/logo.jpg' %}" alt="logo" 
+        width="100%" height="auto"/>
+</head>
+<br/>
+<body>
+<p>
     {% if error_message %}<strong>{{ error_message | linebreaks }}</strong>{% endif %}
 
 <form action={% url 'employment:interview' %} method="post">
 {% csrf_token %}<br/>
+
 	{{ comment_text| linebreaks }}
 	<input type="submit" name="comment" 
-    value="Click here when you are ready to continue"    
-    style="background-color: aliceblue; color: #03045e;">
+    value="Click here when you are ready to continue">
+    <!-- style="background-color: #cde3e9;"> -->
+
 </form></p>
+</body>

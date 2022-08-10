@@ -2,7 +2,7 @@ from django.test import TestCase
 
 # Create your tests here.
 from django.utils.datastructures import MultiValueDictKeyError
-from .models import *
+from employment.models import *
 from django.core.exceptions import ObjectDoesNotExist
 from collections import Counter
 
@@ -259,10 +259,9 @@ def dependency_reference():
 ## Test for consistency between the output files and records of class Law
 ##    
 def test_law():
-    RELEVANT_LAW = ('C:\\Users\\Andrash\\Google Drive\\AI research\\LawRoby\\'+
-        'Programming\\LawRoby\\employment\\legislation\\relevant_law\\')
-    FULL_SECTIONS = ('C:\\Users\\Andrash\\Google Drive\\AI research\\LawRoby\\'+
-        'Programming\\LawRoby\\employment\\legislation\\full_sections\\')
+    BASE_DIR = 'C:\\Users\\Andrash\\Google Drive\\AI research\\LawRobot\\Programming\\LawRoby'
+    RELEVANT_LAW = str(BASE_DIR) + '\\employment\\legislation\\relevant_law\\'
+    FULL_SECTIONS = str(BASE_DIR) + '\\employment\\legislation\\full_sections\\'
     print(' Test for consistency between output files and class Law (Enter to test)\n')
     input()        
     l = Law.objects.all()
@@ -310,10 +309,13 @@ def pair_uniqueness():
         pair_list=pairs_in_model(m)
         for p in pair_list:
             pairs.append(p)
-    dep=pairs_in_model(Dependency)
-    unique_pairs=set(dep)
-    dep_pairs=list(unique_pairs)
-    pairs=pairs + dep_pairs
+## the following inclusion of Dependency refers to a case when each Pair in Dependency
+## is assigned a new value either by a satisfied reference, or by an unconditional new value
+## assignment in case of no reference satisfied.
+    # dep=pairs_in_model(Dependency)
+    # unique_pairs=set(dep)
+    # dep_pairs=list(unique_pairs)
+    # pairs=pairs + dep_pairs
 
 # Check whether the pairs in the list pairs are unique
     num_duplicate=len(pairs) - len(set(pairs))
@@ -346,10 +348,41 @@ def question_choices():
             print(q, ' is not in Choice')
 
 ##
-## If a value of a key has changed to a new_value, that value cannot change a gain,
-## i.e. the Pair cannot appear again.
+## Each Pair in Dependency either (1) takes a new value when a reference is satisfied,
+## or (2) takes a new value when no reference has been satisfied (if there is a new value
+## assignment without condition at the end), or (3) it will be found in
+## other tables (e.g. Question, Direction...etc)
 ##
-    
+def dependency_assignments():
+    print('Testing the evaluation / assignment of pairs in Dependency')
+    ids = Dependency.objects.all()
+    unique_pairs = []
+## get all ids in Dependency, and create a list of unique key / value pairs
+    for i in ids:
+        record = Dependency.objects.get(id=int(str(i)))
+        pair = [str(record.key), str(record.value)]
+        if pair not in unique_pairs:
+            unique_pairs.append(pair)
+## get the ids of all Dependency records with the same key / value pair
+    for pair in unique_pairs:
+        same_pair_ids = Dependency.objects.filter(key=pair[0], value=pair[1])
+        for id in same_pair_ids:
+            record = Dependency.objects.get(id=int(str(id)))
+## if one of the records has an empty ref_key (i.e. there is no condition for
+## taking a new value), go to the next unique pair
+            if str(record.ref_key) == "":
+                break
+## otherwise (i.e. there is no new value if no reference is satisfied)
+## try the pair in the other classes (it must be in one of them)
+        else:
+            classes = [Abort, Exit, Comment, Direction, Other, Question, Reference]
+            found = try_in(pair[0], pair[1], classes)
+            if found == 0:
+                print( 'ERROR!! the pair '+ str(pair)+ ' is not evaluated')
+            elif found > 1:
+                print( 'ERROR!! the pair '+ str(pair)+ ' is evaluated more than once')
+            
+
 
 #####################################################
 ## Definition of functions called from test functions
@@ -417,14 +450,13 @@ def new_values(class_name, key, value):
     return nv
   
 
-def try_in_finals(key, value):
+def try_in(key, value, classes):
     final = 0
-    finals = [Abort, Exit, Direction, Other, Reference]
-    for cl in finals:
+    for cl in classes:
         try:
             a = cl.objects.get( key=key, value=value )
             final += 1
-            print(value + ' is in ' + str(cl))
+            # print(value + ' is in ' + str(cl))
         except:
             pass
     return final  
@@ -447,10 +479,11 @@ def new_pairs_in_model(class_name):
 ## Testing
 #################
 
-# pair_uniqueness()
-# question_choices()
-# test_law()
-# new_key_evaluation()
-# value_change()
-# dependency_circular_reference()
-# dependency_reference()
+pair_uniqueness()
+question_choices()
+test_law()
+new_key_evaluation()
+value_change()
+dependency_circular_reference()
+dependency_reference()
+dependency_assignments()

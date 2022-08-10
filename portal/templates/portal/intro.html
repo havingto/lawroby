@@ -1,7 +1,14 @@
 {% load static %}
-{% include 'portal/header.html' %}
+<link rel="stylesheet" type="text/css" href="{% static 'portal/style.css' %}">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <img align="left" src="{% static 'portal/logo.jpg' %}" alt="logo" 
+        width="100%" height="auto"/>
+</head>
+<br/>
+<body>
 
-<p><br/>
+<p><br/><br/>
 Warm welcome!
 <br/><br/>
 I am LawRoby, your legal assistant. I will guide you through the 
@@ -45,3 +52,4 @@ Shall we start? (click your response)
 	{% endfor %}
 </fieldset>
 </form></p>
+</body>

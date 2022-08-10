@@ -1,8 +1,11 @@
 
-body {background-color: #b4d5de; }
+body {
+    background-color: #b4d5de;
+    max-width: 400px;
+    }
 img {
     display: block;
-    height: 40pt;
+    max-width: 100%;
     margin-right: 6pt;
     }
 h1 {
@@ -27,13 +30,14 @@ p {
     font-size: 10pt;
     color: #01171d;
     }
+    
 label {
     padding: 4pt;
     background-color: #cde3e9;
     font-style: italic;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-weight: normal;
-    font-size: 9pt;
+    font-size: 10pt;
     color: #01171d;
     display: block ;
     border-style: none;
@@ -41,10 +45,17 @@ label {
     margin-top: 5pt;
     margin-bottom: -12pt;
   }
+
 input[type=radio] {
     position:fixed;
     left:-9999px;
   }
+
+input[type=submit] {
+    background-color: #cde3e9;
+  }
+
+
 fieldset {
   border-radius: 10pt;
   }

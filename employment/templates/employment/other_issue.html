@@ -1,6 +1,12 @@
 {% load static %}
-
-{% include 'portal/header.html' %}
+<link rel="stylesheet" type="text/css" href="{% static 'portal/style.css' %}">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <img align="left" src="{% static 'portal/logo.jpg' %}" alt="logo" 
+        width="100%" height="auto"/>
+</head>
+<br/>
+<body>
 
 <form action="{% url 'employment:other_issue' %}" method="post">
 {% csrf_token %}
@@ -11,7 +17,7 @@
 Please outline your case with a few words, so that I can follow it up. <br/><br/>
 <textarea rows="10" cols="29" name="issue" placeholder="Enter text here"></textarea>	
 <br>
-<input type="submit" value="Click here when you are finished typing."
-style="background-color: aliceblue; color: #03045e;">
+<input type="submit" value="Click here when you are finished typing.">
 </p>
 </form>
+</body>

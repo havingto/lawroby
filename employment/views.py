@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from django.utils.datastructures import MultiValueDictKeyError
-from .models import *
+from .models import Abort, Exit, Law, Other, Case, Issue, Temporary, Direction 
+from .models import Question, Choice, Comment, Dependency, Reference
 from .classes import G
 from django.core.exceptions import ObjectDoesNotExist
 from PyPDF2 import PdfFileMerger
@@ -18,6 +19,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ## The relative locations of the output pdf files
 RELEVANT_LAW = str(BASE_DIR) + '\\employment\\legislation\\relevant_law\\'
 FULL_SECTIONS = str(BASE_DIR) + '\\employment\\legislation\\full_sections\\'
+# RELEVANT_LAW = str(BASE_DIR) + '/employment/legislation/relevant_law/'
+# FULL_SECTIONS = str(BASE_DIR) + '/employment/legislation/full_sections/'
 
 
 def intro(request):
@@ -285,7 +288,6 @@ def interview(request):
                 comment_text = comment.comment_text_now
             G.html = "comment"
             return render(request, 'employment/comment.html', {'comment_text':comment_text})
-        # print(G.key + '-' + G.val + '   for Question')
         try:
             question=Question.objects.get(key=G.key, value=G.val)
         except ObjectDoesNotExist:

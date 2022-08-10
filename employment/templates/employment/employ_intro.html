@@ -1,8 +1,14 @@
 {% load static %}
 
-{% include 'portal/header.html' %}
-
-<p><br/>
+<link rel="stylesheet" type="text/css" href="{% static 'portal/style.css' %}">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <img align="left" src="{% static 'portal/logo.jpg' %}" alt="logo" 
+        width="100%" height="auto"/>
+</head>
+<br/>
+<body>
+<p><br/><br/>
 Welcome to the employment law portal!<br/><br/>
 Although Australian states and territories have constitutional rights 
 to make their own employment related laws, most employment matters are 
@@ -28,3 +34,4 @@ need to remember for now.<br/><br/>
 	{% endfor %}
 </fieldset>
 </form></p>
+</body>

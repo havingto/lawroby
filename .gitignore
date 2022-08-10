@@ -5,7 +5,6 @@ __pycache__
 
 # Env
 .env
-myvenv/
 lawvenv/
 venv/
 
@@ -34,3 +33,6 @@ $RECYCLE.BIN/
 .vs/
 .history/
 *.code-workspace
+
+# PDF output files
+employment/legislation
