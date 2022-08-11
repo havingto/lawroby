@@ -1,19 +1,22 @@
+<html>
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'portal/style.css' %}">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <img align="left" src="{% static 'portal/logo.jpg' %}" alt="logo" 
-        width="100%" height="auto"/>
 </head>
-<br/>
 <body>
+<div>
+<img align="left" src="{% static 'portal/logo.jpg' %}" alt="logo" 
+    width="100%" height="auto"/>
+</div>
+<p>
+<span style="color: #b4d5de;">should not be seen - only for spaceholding</span><br>
 
 <form action="{% url 'employment:other_issue' %}" method="post">
 {% csrf_token %}
-<br/>
     {% if error_message %}<strong>{{ error_message | linebreaks }}</strong>{% endif %}
 
-<br/><p>I've not been able to identify your main issue. <br/><br/>
+I've not been able to identify your main issue. <br/><br/>
 Please outline your case with a few words, so that I can follow it up. <br/><br/>
 <textarea rows="10" cols="29" name="issue" placeholder="Enter text here"></textarea>	
 <br>
@@ -21,3 +24,4 @@ Please outline your case with a few words, so that I can follow it up. <br/><br/
 </p>
 </form>
 </body>
+</html>

@@ -1,18 +1,20 @@
+<html>
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'portal/style.css' %}">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <img align="left" src="{% static 'portal/logo.jpg' %}" alt="logo" 
-        width="100%" height="auto"/>
 </head>
-<br/>
 <body>
-
+<div>
+<img align="left" src="{% static 'portal/logo.jpg' %}" alt="logo" 
+    width="100%" height="auto"/>
+</div>
+<p>
+<span style="color: #b4d5de;">should not be seen - only for spaceholding</span><br>
 <form action={% url 'employment:create_output' %} method="post">
-{% csrf_token %}<br/>
-<br/>
+{% csrf_token %}
     {% if error_message %}<strong>{{ error_message | linebreaks }}</strong>{% endif %}
-<p>Thank you for your responses. <br/><br/>
+Thank you for your responses. <br/><br/>
 I've prepared two pdf files for you. One contains the law that is directly 
 and specifically relevant to your case. The second file contains full sections 
 of the particular legislaton which are more generally relevant. They provide a 
@@ -21,3 +23,4 @@ wider legal context and reference. <br/></p>
 <input type="submit" name="full_sections" value="Download - full_sections">
 </form>
 </body>
+</html>

@@ -1,17 +1,20 @@
+<html>
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'portal/style.css' %}">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <img align="left" src="{% static 'portal/logo.jpg' %}" alt="logo" 
-        width="100%" height="auto"/>
 </head>
-<br/>
 <body>
-
+<div>
+<img align="left" src="{% static 'portal/logo.jpg' %}" alt="logo" 
+    width="100%" height="auto"/>
+</div>
+<p>
+<span style="color: #b4d5de;">should not be seen - only for spaceholding</span><br>
     {% if error_message %}<strong>{{ error_message | linebreaks }}</strong>{% endif %}
     <br/>
-<!-- <p><br/>{{ abort_text }}</p> -->
-<p><br/>I am sorry, your case may fall outside the ambit of the Fair Work Act.
+I am sorry, your case may fall outside the ambit of the Fair Work Act.
 So, I am not able to assist you this time. Thank you for your visit, and please come
-back when you have an other inquiry.</p>
+back when you have another inquiry.</p>
 </body>
+</html>
