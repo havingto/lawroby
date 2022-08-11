@@ -41,7 +41,7 @@ SECRET_KEY = '$bsuo!1@0e(uv#amzz7=%h(nxbq-3tp#g+rixin6msfl+1xz1^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.lawrobot.pythonanywhere.com']
+ALLOWED_HOSTS = ['lawrobot.pythonanywhere.com']
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # Application definition
