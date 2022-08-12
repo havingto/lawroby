@@ -11,16 +11,15 @@
 </div>
 <p>
 <span style="color: #b4d5de;">should not be seen - only for spaceholding</span><br>
-<form action={% url 'employment:create_output' %} method="post">
-{% csrf_token %}
-    {% if error_message %}<strong>{{ error_message | linebreaks }}</strong>{% endif %}
+{% if error_message %}<strong>{{ error_message | linebreaks }}</strong>{% endif %}
 Thank you for your responses. <br/><br/>
 I've prepared two pdf files for you. One contains the law that is directly 
 and specifically relevant to your case. The second file contains full sections 
 of the particular legislaton which are more generally relevant. They provide a 
 wider legal context and reference. <br/>
-<input type="submit" name="relevant_law" value="Download - relevant_law">
-<input type="submit" name="full_sections" value="Download - full_sections">
+<form action={% url 'employment:create_output' %} method="post">
+    <input type="submit" name="relevant_law" value="Download - relevant_law">
+    <input type="submit" name="full_sections" value="Download - full_sections">
 </form></p>
 </body>
 </html>

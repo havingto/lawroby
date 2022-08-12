@@ -1,7 +1,7 @@
 
 body {
     background-color: #b4d5de;
-    max-width: 400px;
+    max-width: 360px;
     }
 img {
     display: block;
@@ -51,6 +51,10 @@ input[type=radio] {
 
 input[type=submit] {
     background-color: #cde3e9;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-weight: normal;
+    font-size: 9pt;
+    color: #01171d;
   }
 
 
