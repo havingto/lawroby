@@ -260,8 +260,10 @@ def dependency_reference():
 ##    
 def test_law():
     BASE_DIR = 'C:\\Users\\Andrash\\Google Drive\\AI research\\LawRobot\\Programming\\LawRoby'
-    RELEVANT_LAW = str(BASE_DIR) + '\\employment\\legislation\\relevant_law\\'
-    FULL_SECTIONS = str(BASE_DIR) + '\\employment\\legislation\\full_sections\\'
+    RELEVANT_LAW = BASE_DIR + '\\employment\\legislation\\relevant_law\\'
+    FULL_SECTIONS = BASE_DIR + '\\employment\\legislation\\full_sections\\'
+    print(RELEVANT_LAW)
+    print(FULL_SECTIONS)
     print(' Test for consistency between output files and class Law (Enter to test)\n')
     input()        
     l = Law.objects.all()
@@ -479,11 +481,11 @@ def new_pairs_in_model(class_name):
 ## Testing
 #################
 
-pair_uniqueness()
-question_choices()
+# pair_uniqueness()
+# question_choices()
 test_law()
-new_key_evaluation()
-value_change()
-dependency_circular_reference()
-dependency_reference()
-dependency_assignments()
+# new_key_evaluation()
+# value_change()
+# dependency_circular_reference()
+# dependency_reference()
+# dependency_assignments()
