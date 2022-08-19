@@ -1,17 +1,16 @@
 <html>
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'portal/style.css' %}">
 <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'portal/style.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <img align="left" src="{% static 'portal/logo.jpg' %}" alt="logo" 
+        width="100%" height="auto"/>
 </head>
 <body>
-<div>
-<img align="left" src="{% static 'portal/logo.jpg' %}" alt="logo" 
-    width="100%" height="auto"/>
-</div>
 <p>
 <span style="color: #b4d5de;">.</span><br>
 {% if error_message %}<strong>{{ error_message | linebreaks }}</strong>{% endif %}
+{% csrf_token %}
 Thank you for your responses. <br/><br/>
 I've prepared two pdf files for you. One contains the law that is directly 
 and specifically relevant to your case. The second file contains full sections 
