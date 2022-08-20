@@ -25,19 +25,6 @@ Presently I can assist you in Employment Law only, but soon I will
 also be able to help you in Family Law matters, 
 and the work will continue...
 <br/><br/>
-At the conclusion of this interview, I will provide you with two 
-downloadable pdf files: one will contain those 'snippets' of the relevant law 
-(in the form of sections and subsections of the legislation) that 
-are specific to your case, and another one that will outline the broader 
-statutory framework of your case for context and reference.
-<br/><br/>
-However, you need to be aware that I cannot guarantee that at any point 
-of time the information in those files is complete or exhaustive. Also, 
-because I am not designed to interpret legislation or tell you what 
-(or what not) to do, my assistance cannot replace professional legal advice, 
-and in no circumstances should it be taken as such. 
-(Yes, this was a disclaimer…) 
-<br/><br/>
 Shall we start? (click your response)
 <br/>
 
@@ -45,7 +32,7 @@ Shall we start? (click your response)
 {% csrf_token %}
 <fieldset>
 	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-	{% for choice in law %}
+	{% for choice in starting %}
 		<input type="radio" name="choice" id="choice{{ forloop.counter }}" 
 			onclick="javascript: submit()" value="{{ forloop.counter }}">
 		<label for="choice{{ forloop.counter }}">{{ choice }}</label><br/>

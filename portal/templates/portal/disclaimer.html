@@ -1,0 +1,40 @@
+<html>
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'portal/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <img align="left" src="{% static 'portal/logo.jpg' %}" alt="logo" 
+        width="100%" height="auto"/>
+</head>
+<body>
+<p>
+<span style="color: #b4d5de;">.</span><br>
+At the conclusion of this interview, I will provide you with two 
+downloadable pdf files: one will contain those 'snippets' of the relevant law 
+(in the form of sections and subsections of the legislation) that 
+are specific to your case, and another one that will outline the broader 
+statutory framework of your case for context and reference.
+<br/><br/>
+However, you need to be aware that I cannot guarantee that at any point 
+of time the information in those files is complete or exhaustive. Also, 
+because I am not designed to interpret legislation or tell you what 
+(or what not) to do, my assistance cannot replace professional legal advice, 
+and in no circumstances should it be taken as such. 
+(Yes, this was a disclaimer…) 
+<br/><br/>
+(click your response)
+<br/>
+
+<form action={% url 'disclaimer' %} method="post">
+{% csrf_token %}
+<fieldset>
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+	{% for choice in acceptance %}
+		<input type="radio" name="choice" id="choice{{ forloop.counter }}" 
+			onclick="javascript: submit()" value="{{ forloop.counter }}">
+		<label for="choice{{ forloop.counter }}">{{ choice }}</label><br/>
+	{% endfor %}
+</fieldset>
+</form></p>
+</body>
+</html>
