@@ -1,10 +1,5 @@
-{% load static %}
-<head>
-    <link rel="stylesheet" type="text/css" href="{% static 'portal/style.css' %}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <img align="left" src="{% static 'portal/logo.jpg' %}" alt="logo" 
-        width="100%" height="auto"/>
-</head>
+<html>
+<head>{% include 'portal/header.html' %}</head>
 <p>
 <span style="color: #b4d5de;">.</span><br>
 
@@ -18,3 +13,4 @@
     value="Click here when you are ready to continue">
 
 </form></p>
+</html>
