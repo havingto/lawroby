@@ -1,19 +1,23 @@
 <html>
 <head>{% include 'portal/header.html' %}</head>
 <body>
-<p>
-<span style="color: #b4d5de;">.</span><br>
-{% if error_message %}<strong>{{ error_message | linebreaks }}</strong>{% endif %}
-Thank you for your responses. <br/><br/>
+<p><span style="color: #b4d5de;">.</span><br></p>
+<p>{% if error_message %}<strong>{{ error_message | linebreaks }}</strong>{% endif %}</p>
+<p>Thank you for your responses. <br/><br/>
 I've prepared two pdf files for you to download. One contains the law that is directly 
 and specifically relevant to your case. The second file contains full sections 
 of the particular legislaton which are more generally relevant. They provide a 
-wider legal context and reference. <br/>
+wider legal context and reference. <br/></p>
 <form action={% url 'employment:create_output' %} method="post">
 {% csrf_token %}
-    <input type="submit" name="relevant_law" value="relevant_law">
-    
-    <input type="submit" name="full_sections" value="full_sections">
-</form></p>
+    <p>
+    <input type="submit" name="relevant_law" value="Download relevant_law">
+    <span style="color: #b4d5de;">.</span><br><br>
+    <input type="submit" name="full_sections" value="Download full_sections">
+    <span style="color: #b4d5de;">.</span><br><br>
+    Please, help me improve!<br><br>
+    <input type="submit" name="feedback" value="After your downloads, leave a feedback here...">
+    </p>
+</form>
 </body>
 </html>

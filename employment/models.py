@@ -49,6 +49,7 @@ class Case (models.Model):
     date = models.DateTimeField(auto_now=True)
     case = models.JSONField(default=dict)
     answers = models.JSONField(default=dict)
+    feedback = models.CharField(max_length=1500, null=True)
     def __str__(self):
         return '%s' % str(self.id)
 
@@ -154,6 +155,7 @@ class Dependency(models.Model):
     def __str__(self):
         return "%s" % (self.id)
 
+## class Reasign has been incorporated into Dependency
 # class Reassign (models.Model):
 # # VAL changes to new_value without conditions
 

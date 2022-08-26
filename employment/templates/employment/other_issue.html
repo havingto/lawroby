@@ -3,15 +3,15 @@
 <body>
 <p>
 <span style="color: #b4d5de;">.</span><br>
-
-<form action="{% url 'employment:other_issue' %}" method="post">
-{% csrf_token %}
-    {% if error_message %}<strong>{{ error_message | linebreaks }}</strong>{% endif %}
+{% if error_message %}<strong>{{ error_message | linebreaks }}</strong>{% endif %}
 
 I've not been able to identify your main issue. <br/><br/>
 Please outline your case with a few words, so that I can follow it up. <br/><br/>
-<textarea rows="10" cols="29" name="issue" placeholder="Enter text here"></textarea>	
-<br>
+
+<form action="{% url 'employment:other_issue' %}" method="post">
+{% csrf_token %}
+<textarea rows="10" cols="44" name="issue" placeholder="Enter text here"></textarea>	
+<br><br>
 <input type="submit" value="Click here when you are finished typing.">
 </form>
 </p>

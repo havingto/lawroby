@@ -1,0 +1,15 @@
+<html>
+<head>{% include 'portal/header.html' %}</head>
+<body>
+<p><span style="color: #b4d5de;">.</span><br></p>
+{% if error_message %}<strong>{{ error_message | linebreaks }}</strong>{% endif %}
+<p>
+<form action="{% url 'employment:feedback' %}" method="post">
+    {% csrf_token %}
+    <textarea rows="10" cols="44" name="feedback" placeholder="Enter your feedback here"></textarea>	
+    <br><br>
+    <input type="submit" value="Click here when you are finished typing.">
+</form>
+</p>
+</body>
+</html>

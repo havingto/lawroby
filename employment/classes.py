@@ -13,3 +13,4 @@ class G:
     question_text = ""
     question_id = 0
     html = ""
+    case_id = 0
